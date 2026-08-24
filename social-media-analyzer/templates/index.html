@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Social Media Content Analyzer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Social Media Content Analyzer</h1>
+      <p class="subtitle">Upload a PDF or a scanned image of a post to extract its text and get engagement suggestions.</p>
+    </header>
+
+    <main>
+      <div id="dropzone" class="dropzone">
+        <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.webp,.bmp,.tiff,.tif" hidden />
+        <div class="dropzone-content">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 16V4m0 0L7 9m5-5l5 5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p><strong>Drag & drop</strong> a PDF or image here</p>
+          <p class="or-text">or</p>
+          <button id="browse-btn" type="button">Browse files</button>
+          <p class="hint">PDF, PNG, JPG, WEBP, BMP, TIFF — up to 20MB</p>
+        </div>
+      </div>
+
+      <div id="file-info" class="file-info hidden"></div>
+      <div id="error-box" class="error-box hidden"></div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span id="loading-text">Extracting text…</span>
+      </div>
+
+      <section id="results" class="results hidden">
+        <div class="results-grid">
+          <div class="card">
+            <h2>Extracted Text</h2>
+            <pre id="extracted-text"></pre>
+          </div>
+          <div class="card">
+            <h2>Engagement Analysis</h2>
+            <div id="stats" class="stats"></div>
+            <h3>Suggestions</h3>
+            <ul id="suggestions"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Runs entirely with local text extraction (pdfplumber) and OCR (Tesseract) — no external AI service required.</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
