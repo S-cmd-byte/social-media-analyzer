@@ -7,6 +7,8 @@ with suggestions.
 **Stack:** Single Flask app (Python) serving a vanilla HTML/CSS/JS frontend —
 one process, one repo, no build step, no API keys required.
 
+Live Demo: https://social-media-analyzer-f3rl.onrender.com/
+
 ## Features
 
 - Drag-and-drop **or** file-picker upload for PDFs and images
